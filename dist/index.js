@@ -26,4 +26,9 @@ program
         }
     }
 });
+// Handle unknown commands
+program.on("command:*", (operands) => {
+    console.error(`Error: Unknown command '${operands[0]}'`);
+    program.outputHelp(); // Display help information
+});
 program.parse(process.argv);

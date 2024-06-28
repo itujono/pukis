@@ -1,4 +1,3 @@
-import { execa } from "execa";
 import { ComponentName } from "../scaffold";
 
 export async function installPackages(component: ComponentName) {
@@ -11,6 +10,7 @@ export async function installPackages(component: ComponentName) {
 
   try {
     console.log("Installing packages...");
+    const { execa } = await import("execa");
     await execa("npm", ["install", ...packages]);
     console.log("Packages installed successfully.");
   } catch (error) {

@@ -22,22 +22,35 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validComponents = void 0;
 exports.scaffoldComponent = scaffoldComponent;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const templates_1 = require("./templates");
-exports.validComponents = ["Button", "Input", "Card"];
+const install_packages_1 = require("./utils/install-packages");
+exports.validComponents = ["Button", "Label", "Card"];
 function scaffoldComponent(component) {
-    if (!exports.validComponents.includes(component)) {
-        throw new Error(`Component ${component} does not exist. Please choose from: ${exports.validComponents.join(", ")}`);
-    }
-    const componentDir = path.join(process.cwd(), "src", "components", component);
-    const componentFile = path.join(componentDir, `${component}.tsx`);
-    if (!fs.existsSync(componentDir)) {
-        fs.mkdirSync(componentDir, { recursive: true });
-    }
-    const componentTemplate = templates_1.componentTemplates[component];
-    fs.writeFileSync(componentFile, componentTemplate, "utf8");
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!exports.validComponents.includes(component)) {
+            throw new Error(`Component ${component} does not exist. Please choose from: ${exports.validComponents.join(", ")}`);
+        }
+        yield (0, install_packages_1.installPackages)(component);
+        const componentDir = path.join(process.cwd(), "src", "components", component);
+        const componentFile = path.join(componentDir, `${component}.tsx`);
+        if (!fs.existsSync(componentDir)) {
+            fs.mkdirSync(componentDir, { recursive: true });
+        }
+        const componentTemplate = templates_1.componentTemplates[component];
+        fs.writeFileSync(componentFile, componentTemplate, "utf8");
+    });
 }
