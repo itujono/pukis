@@ -1,4 +1,4 @@
-import { ComponentName, validComponents } from "../scaffold";
+import { ComponentName } from "../scaffold";
 import { ButtonTemplate } from "./Button";
 import { CardTemplate } from "./Card";
 import { LabelTemplate } from "./Label";

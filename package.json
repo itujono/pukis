@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "tsc"
+    "prepare": "tsc",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "bin": {
     "prata": "dist/index.js"
@@ -20,6 +23,9 @@
     "typescript": "^5.5.2"
   },
   "devDependencies": {
+    "eslint": "^9.6.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.2",
     "ts-node": "^10.9.2"
   }
 }

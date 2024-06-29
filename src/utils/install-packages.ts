@@ -12,7 +12,7 @@ export async function installPackages(component: ComponentName) {
     console.log("Installing packages...");
     const { execa } = await import("execa");
     await execa("npm", ["install", ...packages]);
-    console.log("Packages installed successfully.");
+    console.log(`Packages for ${component} installed successfully.`);
   } catch (error) {
     if (error instanceof Error)
       throw new Error("Failed to install packages: " + error.message);
