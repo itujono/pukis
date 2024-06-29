@@ -8,11 +8,7 @@ export type ComponentName = (typeof validComponents)[number];
 
 export async function scaffoldComponent(component: ComponentName) {
   if (!validComponents.includes(component)) {
-    throw new Error(
-      `Component ${component} does not exist. Please choose from: ${validComponents.join(
-        ", "
-      )}`
-    );
+    throw new Error(`Component ${component} does not exist. Please choose from: ${validComponents.join(", ")}`);
   }
 
   await installPackages(component);

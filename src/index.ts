@@ -6,10 +6,7 @@ import { PROGRAM_NAME } from "./constants";
 
 const program = new Command();
 
-program
-  .name(PROGRAM_NAME)
-  .description("CLI to scaffold React components")
-  .version("1.0.0");
+program.name(PROGRAM_NAME).description("CLI to scaffold React components").version("1.0.0");
 
 program
   .command("add <component>")
