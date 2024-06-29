@@ -1,4 +1,4 @@
-import { ComponentName } from "../scaffold";
+import type { ComponentName } from "../scaffold";
 
 export async function installPackages(component: ComponentName) {
   const packages = componentPackages[component];
@@ -19,7 +19,7 @@ export async function installPackages(component: ComponentName) {
   }
 }
 
-const componentPackages = {
+const componentPackages: Record<ComponentName, string[]> = {
   Button: ["class-variance-authority", "@radix-ui/react-slot"],
   Label: ["class-variance-authority", "@radix-ui/react-label"],
   Card: [],

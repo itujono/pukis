@@ -3,10 +3,11 @@
 import { Command } from "commander";
 import { scaffoldComponent } from "./scaffold";
 import { PROGRAM_NAME } from "./constants";
+import { version } from "../package.json";
 
 const program = new Command();
 
-program.name(PROGRAM_NAME).description("CLI to scaffold React components").version("1.0.0");
+program.name(PROGRAM_NAME).description("CLI to scaffold React components").version(version);
 
 program
   .command("add <component>")

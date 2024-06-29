@@ -13,7 +13,7 @@ export async function scaffoldComponent(component: ComponentName) {
 
   await installPackages(component);
 
-  const componentDir = path.join(process.cwd(), "src", "components", component);
+  const componentDir = path.join(process.cwd(), "src", "components");
   const componentFile = path.join(componentDir, `${component}.tsx`);
 
   if (!fs.existsSync(componentDir)) {
