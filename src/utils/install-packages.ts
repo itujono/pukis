@@ -14,13 +14,12 @@ export async function installPackages(component: ComponentName) {
     await execa("npm", ["install", ...packages]);
     console.log(`Packages for ${component} installed successfully.`);
   } catch (error) {
-    if (error instanceof Error)
-      throw new Error("Failed to install packages: " + error.message);
+    if (error instanceof Error) throw new Error("Failed to install packages: " + error.message);
     throw new Error("Failed to install packages: " + String(error));
   }
 }
 
-export const componentPackages = {
+const componentPackages = {
   Button: ["class-variance-authority", "@radix-ui/react-slot"],
   Label: ["class-variance-authority", "@radix-ui/react-label"],
   Card: [],
