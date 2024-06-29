@@ -10,9 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    steps:
+      - name: Placeholder step
+        run: echo "This is a placeholder step to avoid workflow errors."
 
   bump-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
