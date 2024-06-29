@@ -37,9 +37,9 @@ async function createUtilsFile() {
 
 async function installRequiredPackages() {
   const { execa } = await import("execa");
-  const packages = ["tailwindcss", "clsx", "tailwind-merge"];
+  const packages = ["tailwindcss", "clsx", "tailwind-merge", "tailwindcss-animate"];
   try {
-    console.log(colorize.green("Installing required packages..."));
+    console.log("Installing required packages...");
     await execa("npm", ["install", ...packages]);
     console.log(colorize.green("Required packages installed successfully. 🎉🎉"));
   } catch (error) {
