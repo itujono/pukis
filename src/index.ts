@@ -15,7 +15,7 @@ program
   .action((component) => {
     try {
       scaffoldComponent(component);
-      console.log(`Component ${component} has been created successfully.`);
+      console.log(`Component ${component} has been created successfully. 🎉`);
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
