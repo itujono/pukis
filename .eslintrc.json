@@ -16,6 +16,10 @@
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser"
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "parser": "espree"
     }
   ]
 }
