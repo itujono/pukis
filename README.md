@@ -1,9 +1,9 @@
-# Prata CLI
+# Pukis CLI
 
 Scaffold React components with ease.
 
 ## Usage
 
 ```bash
-npx prata add <component-name>
+npx pukis add <component-name>
 ```
