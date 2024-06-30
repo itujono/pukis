@@ -26,7 +26,7 @@ export async function initApp() {
 
 Project initialized successfully 🎉🎉.
 
-Next, why don't you try adding a component e.g. \`npx pukis add Button\`, \`npx pukis add Card\`, etc.
+Next, why don't you try adding a component e.g. \`npx ${PROGRAM_NAME} add Button\`, \`npx ${PROGRAM_NAME} add Card\`, etc.
 
 `
       )

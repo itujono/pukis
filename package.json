@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "rm -rf dist && tsc && chmod +x /Users/riva/.npm/_npx/6f865a6ca265ef10/node_modules/.bin/prata",
+    "prepare": "rm -rf dist && tsc && chmod +x dist/index.js",
     "lint": "eslint .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write ."
