@@ -2,11 +2,16 @@ import path from "path";
 import fs from "fs";
 import { colorize } from "../utils/colorize-log";
 
-export async function updateTailwindConfig() {
+interface Colors {
+  primaryColor: string;
+  secondaryColor: string;
+}
+
+export async function updateTailwindConfig(colors: Colors) {
   const tailwindConfig = path.join(process.cwd(), "tailwind.config.ts");
 
   try {
-    fs.writeFileSync(tailwindConfig, tailwindConfigContent);
+    fs.writeFileSync(tailwindConfig, tailwindConfigContent(colors));
     console.log(colorize.green("tailwind.config.ts has been updated successfully."));
   } catch (error) {
     if (error instanceof Error) {
@@ -17,7 +22,7 @@ export async function updateTailwindConfig() {
   }
 }
 
-const tailwindConfigContent = `
+const tailwindConfigContent = (colors: Colors) => `
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
 import { fontFamily } from "tailwindcss/defaultTheme";
@@ -38,8 +43,8 @@ const config = {
             sans: ["var(--font-sans)", ...fontFamily.sans],
         },
         colors: {
-            primary: "#051800",
-            secondary: "#369E5A",
+            primary: "${colors.primaryColor}",
+            secondary: "${colors.secondaryColor}",
             black: "#000",
             white: "#fff",
             transparent: "transparent",

@@ -3,7 +3,7 @@ import fs from "fs";
 import { colorize } from "../utils/colorize-log";
 
 export async function createUtilsFile() {
-  const utilsDir = path.join(process.cwd(), "utils");
+  const utilsDir = path.join(process.cwd(), "@utils/utils");
   const utilsFile = path.join(utilsDir, "utils.ts");
   const utilsContent = `
     import { clsx, type ClassValue } from "clsx";
