@@ -16,15 +16,15 @@ program.command("init").description("Initialize the project").action(initApp);
 program
   .command("add <component>")
   .description("Add a new React component")
-  .action((component) => {
+  .action(async (component) => {
     try {
-      scaffoldComponent(component);
-      console.log(colorize.green(`Component ${component} has been created successfully.`));
+      await scaffoldComponent(component);
+      console.log(colorize.green(`✅ ${component} added.`));
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
       } else {
-        console.error("An unknown error occurred while creating the component.");
+        console.error(colorize.red("❌ An unknown error occurred while creating the component."));
       }
     }
   });

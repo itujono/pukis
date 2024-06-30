@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { componentTemplates } from "./templates";
-import { installPackages } from "./utils/install-packages";
+import { installComponentPackages } from "./utils/install-component-packages";
 import { loadConfig } from "./config";
 
 export const validComponents = ["Button", "Label", "Card"] as const;
@@ -12,7 +12,7 @@ export async function scaffoldComponent(component: ComponentName) {
     throw new Error(`Component ${component} does not exist. Please choose from: ${validComponents.join(", ")}`);
   }
 
-  await installPackages(component);
+  await installComponentPackages(component);
 
   const config = loadConfig();
 

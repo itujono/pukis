@@ -1,5 +1,7 @@
 {
-  "componentsDir": "/src/components/ui",
+  "componentsDir": "src/components/ui",
   "primaryColor": "#051800",
-  "secondaryColor": "#369E5A"
+  "secondaryColor": "#369E5A",
+  "utilsDir": "src/lib",
+  "globalsCssDir": "src/styles"
 }

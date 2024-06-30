@@ -1,14 +1,21 @@
+import { PackageManager } from "../constants";
 import { colorize } from "../utils/colorize-log";
+
+const packages = ["tailwindcss", "clsx", "tailwind-merge", "tailwindcss-animate"];
 
 export async function installRequiredPackages() {
   const { execa } = await import("execa");
-  const packages = ["tailwindcss", "clsx", "tailwind-merge", "tailwindcss-animate"];
   try {
     console.log("Installing required packages...");
-    const { stderr } = await execa("npm", ["install", ...packages]);
+    const child = execa(PackageManager.NAME, [PackageManager.INSTALL, ...packages], {
+      timeout: 150000,
+    }); // 2.5 minutes timeout
+
+    const { stdout, stderr } = await child;
     if (stderr) {
       console.error("Error installing required packages:", stderr);
     }
+    console.log(stdout);
     console.log(colorize.green("Required packages installed successfully."));
   } catch (error: any) {
     console.error("Error installing required packages:", error);

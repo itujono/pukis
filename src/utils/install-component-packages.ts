@@ -1,18 +1,23 @@
+import { PackageManager } from "../constants";
 import type { ComponentName } from "../scaffold";
 
-export async function installPackages(component: ComponentName) {
+export async function installComponentPackages(component: ComponentName) {
   const packages = componentPackages[component];
 
   if (!packages.length) {
-    console.log("No packages to install for component " + component);
     return;
   }
 
   try {
     console.log("Installing packages...");
     const { execa } = await import("execa");
-    await execa("npm", ["install", ...packages]);
-    console.log(`Packages for ${component} installed successfully.`);
+    const child = execa(PackageManager.NAME, [PackageManager.INSTALL, ...packages], {
+      timeout: 150000,
+    });
+    const { stdout, stderr } = await child;
+    console.log({ stdout });
+    console.log({ stderr });
+    console.log(`Packages for ${component} installed.`);
   } catch (error) {
     if (error instanceof Error) throw new Error("Failed to install packages: " + error.message);
     throw new Error("Failed to install packages: " + String(error));

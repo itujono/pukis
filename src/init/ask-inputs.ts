@@ -1,3 +1,5 @@
+import { defaultConfig } from "../config";
+
 const validate = (input: string) => (input.startsWith("#") ? true : "Color must start with '#'.");
 
 interface InputResponse {
@@ -14,21 +16,21 @@ export async function askInputs(): Promise<InputResponse> {
       type: "input",
       name: "primaryColor",
       message: "What is the primary color of your project?",
-      default: "#000000",
+      default: defaultConfig.primaryColor,
       validate,
     },
     {
       type: "input",
       name: "secondaryColor",
       message: "What is the secondary color of your project?",
-      default: "#000000",
+      default: defaultConfig.secondaryColor,
       validate,
     },
     {
       type: "input",
       name: "componentsDir",
       message: "Where should we put the components?",
-      default: "/src/components/ui",
+      default: defaultConfig.componentsDir,
     },
   ]);
 

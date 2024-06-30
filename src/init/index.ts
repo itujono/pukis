@@ -6,6 +6,8 @@ import { colorize } from "../utils/colorize-log";
 import { askInputs } from "./ask-inputs";
 import { saveConfig } from "../config";
 import { updateTsConfigFile } from "./update-tsconfig";
+import { createGlobalsCss } from "./create-globals-css";
+import { PROGRAM_NAME } from "../constants";
 
 export async function initApp() {
   try {
@@ -14,14 +16,15 @@ export async function initApp() {
     await installRequiredPackages();
     await createUtilsFile();
     await updateTsConfigFile();
+    createGlobalsCss();
     await updateTailwindConfig(colors);
     saveConfig({ componentsDir, ...colors });
     console.log(colorize.green("Project initialized successfully. 🎉🎉"));
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Error initializing project:", error.message);
+      console.error(`Error initializing ${PROGRAM_NAME}:`, error.message);
     } else {
-      console.error("An unknown error occurred while initializing the project.");
+      console.error(`An unknown error occurred while initializing ${PROGRAM_NAME}.`);
     }
   }
 }
