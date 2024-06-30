@@ -1,20 +1,27 @@
 import path from "path";
 import fs from "fs";
-import { colorize } from "../utils/colorize-log";
 import { PROGRAM_NAME } from "../constants";
 
+const getErrorMessage = (app: string) =>
+  `At the moment, ${PROGRAM_NAME} is only available for ${app}. Please create a ${app} project first.`;
+
 export async function getIsNextJsProject() {
+  const ora = (await import("ora")).default;
+  const spinner = ora("Checking if it's a Next.js project...").start();
+
   const isReactProject = getIsReactProject();
   if (!isReactProject) {
-    throw new Error(`At the moment, ${PROGRAM_NAME} is only available for React.js. Please create a React.js project first.`);
+    spinner.fail(getErrorMessage("React.js"));
+    return;
   }
   const configFiles = fs.readdirSync(process.cwd());
   const isNextJsProject = configFiles.some((file) => /^next\.config\.(js|ts|mjs)$/.test(file));
 
   if (!isNextJsProject) {
-    throw new Error(`At the moment, ${PROGRAM_NAME} is only available for Next.js. Please create a Next.js project first.`);
+    spinner.fail(getErrorMessage("Next.js"));
+    return;
   }
-  console.log(colorize.green("Next.js project detected. Noice!"));
+  spinner.succeed("Next.js project detected. Noice!");
 }
 
 function getIsReactProject() {

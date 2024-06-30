@@ -27,7 +27,7 @@ export async function createUtilsFile() {
   try {
     if (!fs.existsSync(utilsDir)) fs.mkdirSync(utilsDir, { recursive: true });
     fs.writeFileSync(utilsFile, utilsContent);
-    spinner.succeed(`utils.ts has been created successfully in the ${config.utilsDir} directory.`);
+    spinner.succeed(`utils.ts created in ${config.utilsDir}`);
   } catch (error) {
     if (error instanceof Error) {
       spinner.fail(`Error creating utils.ts file: ${error.message}`);

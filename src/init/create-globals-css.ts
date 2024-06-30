@@ -14,7 +14,7 @@ export async function createGlobalsCss() {
     if (!fs.existsSync(globalsCssFile)) {
       fs.writeFileSync(globalsCssFile, globalsCssContent, "utf8");
     }
-    spinner.succeed("globals.css has been created successfully.");
+    spinner.succeed("globals.css created.");
   } catch (error) {
     if (error instanceof Error) {
       spinner.fail(`Error creating globals.css: ${error.message}`);
