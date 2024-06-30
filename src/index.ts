@@ -29,7 +29,7 @@ program
   .action((component) => {
     try {
       scaffoldComponent(component);
-      console.log(colorize.green(`Component ${component} has been created successfully. 🎉🎉`));
+      console.log(colorize.green(`Component ${component} has been created successfully.`));
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
