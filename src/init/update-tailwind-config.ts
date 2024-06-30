@@ -1,6 +1,5 @@
 import path from "path";
 import fs from "fs";
-import { colorize } from "../utils/colorize-log";
 
 interface Colors {
   primaryColor: string;
@@ -9,15 +8,17 @@ interface Colors {
 
 export async function updateTailwindConfig(colors: Colors) {
   const tailwindConfig = path.join(process.cwd(), "tailwind.config.ts");
+  const ora = (await import("ora")).default;
+  const spinner = ora("Updating tailwind.config.ts...").start();
 
   try {
     fs.writeFileSync(tailwindConfig, tailwindConfigContent(colors));
-    console.log(colorize.green("tailwind.config.ts has been updated successfully."));
+    spinner.succeed("tailwind.config.ts has been updated successfully.");
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error.message);
+      spinner.fail(error.message);
     } else {
-      console.error(colorize.red("An unknown error occurred while updating tailwind.config.ts"));
+      spinner.fail("An unknown error occurred while updating tailwind.config.ts");
     }
   }
 }

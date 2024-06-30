@@ -2,10 +2,13 @@ import path from "path";
 import fs from "fs";
 
 export async function updateTsConfigFile() {
+  const ora = (await import("ora")).default;
+  const spinner = ora("Updating tsconfig.json...").start();
   const tsConfigFile = path.join(process.cwd(), "tsconfig.json");
 
   if (!fs.existsSync(tsConfigFile)) {
-    throw new Error("tsconfig.json file not found");
+    spinner.fail("tsconfig.json file not found");
+    return;
   }
 
   // Look for `compilerOptions.paths` and `baseUrl`
@@ -22,4 +25,5 @@ export async function updateTsConfigFile() {
 
   tsConfig.compilerOptions = compilerOptions;
   fs.writeFileSync(tsConfigFile, JSON.stringify(tsConfig, null, 2), "utf8");
+  spinner.succeed("tsconfig.json has been updated successfully.");
 }

@@ -2,14 +2,25 @@ import path from "path";
 import fs from "fs";
 import { loadConfig } from "../config";
 
-export function createGlobalsCss() {
-  const config = loadConfig();
-  const globalsCssDir = path.join(process.cwd(), config.globalsCssDir);
-  if (!fs.existsSync(globalsCssDir)) fs.mkdirSync(globalsCssDir, { recursive: true });
+export async function createGlobalsCss() {
+  const ora = (await import("ora")).default;
+  const spinner = ora("Creating globals.css...").start();
+  try {
+    const config = loadConfig();
+    const globalsCssDir = path.join(process.cwd(), config.globalsCssDir);
+    if (!fs.existsSync(globalsCssDir)) fs.mkdirSync(globalsCssDir, { recursive: true });
 
-  const globalsCssFile = path.join(globalsCssDir, "globals.css");
-  if (!fs.existsSync(globalsCssFile)) {
-    fs.writeFileSync(globalsCssFile, globalsCssContent, "utf8");
+    const globalsCssFile = path.join(globalsCssDir, "globals.css");
+    if (!fs.existsSync(globalsCssFile)) {
+      fs.writeFileSync(globalsCssFile, globalsCssContent, "utf8");
+    }
+    spinner.succeed("globals.css has been created successfully.");
+  } catch (error) {
+    if (error instanceof Error) {
+      spinner.fail(`Error creating globals.css: ${error.message}`);
+    } else {
+      spinner.fail("An unknown error occurred while creating globals.css.");
+    }
   }
 }
 
