@@ -12,6 +12,7 @@
   "bin": {
     "pukis": "dist/index.js"
   },
+  "files": ["dist", "README.md"],
   "keywords": [],
   "author": "",
   "license": "ISC",
