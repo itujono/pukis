@@ -1,6 +1,6 @@
 {
   "name": "pukis",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,10 @@
   "bin": {
     "pukis": "dist/index.js"
   },
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
