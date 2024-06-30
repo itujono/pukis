@@ -19,7 +19,18 @@ export async function initApp() {
     createGlobalsCss();
     await updateTailwindConfig(colors);
     saveConfig({ componentsDir, ...colors });
-    console.log(colorize.green("Project initialized successfully. 🎉🎉"));
+    console.log(
+      colorize.green(
+        `
+        
+
+Project initialized successfully 🎉🎉.
+
+Next, why don't you try adding a component e.g. \`npx pukis add Button\`, \`npx pukis add Card\`, etc.
+
+`
+      )
+    );
   } catch (error) {
     if (error instanceof Error) {
       console.error(`Error initializing ${PROGRAM_NAME}:`, error.message);
