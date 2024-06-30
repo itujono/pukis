@@ -11,17 +11,7 @@ const program = new Command();
 
 program.name(PROGRAM_NAME).description("CLI to scaffold React components").version(version);
 
-program
-  .command("init")
-  .description("Initialize the project")
-  .action(async () => {
-    try {
-      await initApp();
-      console.log(colorize.green("Project initialized successfully. 🎉🎉"));
-    } catch (error) {
-      console.error(colorize.red("An unknown error occurred while initializing the project."));
-    }
-  });
+program.command("init").description("Initialize the project").action(initApp);
 
 program
   .command("add <component>")
@@ -34,14 +24,14 @@ program
       if (error instanceof Error) {
         console.error(error.message);
       } else {
-        console.error(colorize.red("An unknown error occurred while creating the component."));
+        console.error("An unknown error occurred while creating the component.");
       }
     }
   });
 
 // Handle unknown commands
 program.on("command:*", (operands) => {
-  console.error(colorize.red(`Error: Unknown command '${operands[0]}'`));
+  console.error(`Error: Unknown command '${operands[0]}'`);
   program.outputHelp(); // Display help information
 });
 

@@ -2,28 +2,31 @@ import path from "path";
 import fs from "fs";
 import { colorize } from "../utils/colorize-log";
 
-export function getIsNextJsProject() {
+export async function getIsNextJsProject() {
   const isReactProject = getIsReactProject();
   if (!isReactProject) {
-    return false;
+    throw new Error("At the moment, this command is only available for React.js. Please create a React.js project first.");
   }
-  const nextConfigJs = path.join(process.cwd(), "next.config.js");
-  const nextConfigTs = path.join(process.cwd(), "next.config.ts");
-  const isNextJsProject = fs.existsSync(nextConfigJs) || fs.existsSync(nextConfigTs);
+  const configFiles = fs.readdirSync(process.cwd());
+  const isNextJsProject = configFiles.some((file) => /^next\.config\.(js|ts|mjs)$/.test(file));
 
   if (!isNextJsProject) {
-    console.error("At the moment, this command is only available for Next.js. Please create a Next.js project first.");
-    return false;
+    throw new Error("At the moment, this command is only available for Next.js. Please create a Next.js project first.");
   }
   console.log(colorize.green("Next.js project detected. Noice!"));
 }
 
-export function getIsReactProject() {
+function getIsReactProject() {
   const packageJsonPath = path.join(process.cwd(), "package.json");
   if (!fs.existsSync(packageJsonPath)) {
+    console.error("package.json not found.");
     return false;
   }
 
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
-  return packageJson.dependencies && packageJson.dependencies.react;
+  const isReact = packageJson.dependencies && packageJson.dependencies.react;
+  if (!isReact) {
+    console.error("React dependency not found in package.json.");
+  }
+  return isReact;
 }

@@ -5,20 +5,15 @@ export async function installRequiredPackages() {
   const packages = ["tailwindcss", "clsx", "tailwind-merge", "tailwindcss-animate"];
   try {
     console.log("Installing required packages...");
-    const { stdout, stderr } = await execa("npm", ["install", ...packages]);
-    console.log({ stdout });
+    const { stderr } = await execa("npm", ["install", ...packages]);
     if (stderr) {
-      console.error({ stderr });
+      console.error("Error installing required packages:", stderr);
     }
     console.log(colorize.green("Required packages installed successfully."));
-  } catch (error) {
-    console.error({ error: error as any });
-    if ((error as any).stdout) {
-      console.error("stdout:", (error as any).stdout);
-    }
-    if ((error as any).stderr) {
-      console.error("stderr:", (error as any).stderr);
-    }
+  } catch (error: any) {
+    console.error("Error installing required packages:", error);
+    if (error.stdout) console.error("stdout:", error.stdout);
+    if (error.stderr) console.error("stderr:", error.stderr);
     console.error("Failed to install required packages. Please install them manually.");
   }
 }
