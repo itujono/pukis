@@ -4,7 +4,19 @@ import { componentTemplates } from "./templates";
 import { installComponentPackages } from "./utils/install-component-packages";
 import { loadConfig } from "./config";
 
-export const validComponents = ["Button", "Label", "Card"] as const;
+export const validComponents = [
+  "Button",
+  "Label",
+  "Card",
+  "Input",
+  "Alert",
+  "Badge",
+  "Checkbox",
+  "Dialog",
+  "Drawer",
+  "DropdownMenu",
+  "InputOTP",
+] as const;
 export type ComponentName = (typeof validComponents)[number];
 
 export async function scaffoldComponent(component: ComponentName) {

@@ -62,5 +62,4 @@ const globalsCssContent = `
     @apply leading-7 font-sans text-black hover:text-slate-500;
   }
 }
-
 `;

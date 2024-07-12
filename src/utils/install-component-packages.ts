@@ -26,4 +26,12 @@ const componentPackages: Record<ComponentName, string[]> = {
   Button: ["class-variance-authority", "@radix-ui/react-slot"],
   Label: ["class-variance-authority", "@radix-ui/react-label"],
   Card: [],
+  Input: [],
+  Alert: ["class-variance-authority"],
+  Badge: ["class-variance-authority"],
+  Checkbox: ["@radix-ui/react-checkbox", "@radix-ui/react-icons"],
+  Dialog: ["@radix-ui/react-dialog", "@radix-ui/react-icons"],
+  Drawer: ["vaul"],
+  DropdownMenu: ["@radix-ui/react-dropdown-menu", "@radix-ui/react-icons"],
+  InputOTP: ["input-otp"],
 };
