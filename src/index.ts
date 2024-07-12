@@ -5,7 +5,6 @@ import { scaffoldComponent } from "./scaffold";
 import { PROGRAM_NAME, PROGRAM_DESCRIPTION } from "./constants";
 import { version } from "../package.json";
 import { initApp } from "./init";
-import { colorize } from "./utils/colorize-log";
 
 const program = new Command();
 

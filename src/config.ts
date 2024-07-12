@@ -6,7 +6,7 @@ export const defaultConfig = {
   utilsDir: "src/lib",
   primaryColor: "#051800",
   secondaryColor: "#369E5A",
-  globalsCssDir: "src/styles",
+  globalsCssDir: "src/app",
 };
 
 type Config = Record<keyof typeof defaultConfig, any>;

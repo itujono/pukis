@@ -4,9 +4,7 @@ import type { ComponentName } from "../scaffold";
 export async function installComponentPackages(component: ComponentName) {
   const packages = componentPackages[component];
 
-  if (!packages.length) {
-    return;
-  }
+  if (!packages.length) return;
 
   const ora = (await import("ora")).default;
   const spinner = ora(`Installing packages for ${component}...`).start();
@@ -16,7 +14,7 @@ export async function installComponentPackages(component: ComponentName) {
     const child = execa(PackageManager.NAME, [PackageManager.INSTALL, ...packages], {
       timeout: 150000,
     });
-    const { stdout, stderr } = await child;
+    await child;
     spinner.succeed(`Packages for ${component} installed.`);
   } catch (error) {
     if (error instanceof Error) throw new Error("Failed to install packages: " + error.message);
