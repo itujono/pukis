@@ -8,6 +8,7 @@ import { saveConfig } from "../config";
 import { updateTsConfigFile } from "./update-tsconfig";
 import { createGlobalsCss } from "./create-globals-css";
 import { PROGRAM_NAME } from "../constants";
+import { createRcFile } from "./createRcFile";
 
 export async function initApp() {
   try {
@@ -19,6 +20,9 @@ export async function initApp() {
     createGlobalsCss();
     await updateTailwindConfig(colors);
     saveConfig({ componentsDir, ...colors });
+
+    createRcFile();
+
     console.log(
       colorize.green(
         `

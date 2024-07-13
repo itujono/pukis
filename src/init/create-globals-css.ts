@@ -11,11 +11,13 @@ export async function createGlobalsCss() {
     if (!fs.existsSync(globalsCssDir)) fs.mkdirSync(globalsCssDir, { recursive: true });
 
     const globalsCssFile = path.join(globalsCssDir, "globals.css");
-    if (!fs.existsSync(globalsCssFile)) {
-      fs.writeFileSync(globalsCssFile, globalsCssContent, "utf8");
-    }
+
+    // Always write the file, even if it exists
+    fs.writeFileSync(globalsCssFile, globalsCssContent, "utf8");
+
     spinner.succeed("globals.css created.");
   } catch (error) {
+    console.error("Error details:", error);
     if (error instanceof Error) {
       spinner.fail(`Error creating globals.css: ${error.message}`);
     } else {
