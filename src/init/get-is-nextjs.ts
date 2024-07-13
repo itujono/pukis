@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { PROGRAM_NAME } from "../constants";
+import { colorize } from "../utils/colorize-log";
 
 const getErrorMessage = (app: string) =>
   `At the moment, ${PROGRAM_NAME} is only available for ${app}. Please create a ${app} project first.`;
@@ -21,7 +22,7 @@ export async function getIsNextJsProject() {
     spinner.fail(getErrorMessage("Next.js"));
     return;
   }
-  spinner.succeed("Next.js project detected. Noice!");
+  spinner.succeed(colorize.green("Next.js project detected. Noice!\n\n"));
 }
 
 function getIsReactProject() {

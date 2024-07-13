@@ -9,9 +9,17 @@ import { updateTsConfigFile } from "./update-tsconfig";
 import { createGlobalsCss } from "./create-globals-css";
 import { PROGRAM_NAME } from "../constants";
 import { createRcFile } from "./createRcFile";
+import CFonts from "cfonts";
 
 export async function initApp() {
   try {
+    // Display the banner at the start of the function
+    CFonts.say(PROGRAM_NAME, {
+      font: "tiny",
+      align: "left",
+      colors: ["white"],
+    });
+
     await getIsNextJsProject();
     const { componentsDir, ...colors } = await askInputs();
     await installRequiredPackages();
@@ -24,17 +32,14 @@ export async function initApp() {
     createRcFile();
 
     console.log(
-      colorize.green(
-        `
-        
+      colorize.green(`
 
-Project initialized successfully 🎉🎉.
-
-Next, why don't you try adding a component e.g. \`npx ${PROGRAM_NAME} add Button\`, \`npx ${PROGRAM_NAME} add Card\`, etc.
-
-`
-      )
+    Project initialized successfully 🎉🎉.
+    `)
     );
+    console.log(`
+Next, why don't you try adding a component e.g. \`npx ${PROGRAM_NAME} add Button\`, \`npx ${PROGRAM_NAME} add Card\`, etc.
+`);
   } catch (error) {
     if (error instanceof Error) {
       console.error(`Error initializing ${PROGRAM_NAME}:`, error.message);
