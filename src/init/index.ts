@@ -34,7 +34,7 @@ export async function initApp() {
     console.log(
       colorize.green(`
 
-    Project initialized successfully 🎉🎉.
+Project initialized successfully 🎉🎉.
     `)
     );
     console.log(`

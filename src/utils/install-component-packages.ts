@@ -1,5 +1,5 @@
 import { PackageManager } from "../constants";
-import type { ComponentName } from "../scaffold";
+import type { ComponentName } from "./get-list-components";
 
 export async function installComponentPackages(component: ComponentName) {
   const packages = componentPackages[component];
@@ -34,4 +34,7 @@ const componentPackages: Record<ComponentName, string[]> = {
   Drawer: ["vaul"],
   DropdownMenu: ["@radix-ui/react-dropdown-menu", "@radix-ui/react-icons"],
   InputOTP: ["input-otp"],
+  Form: ["@radix-ui/react-label", "@radix-ui/react-slot", "react-hook-form", "@hookform/resolvers", "zod"],
+  MenuBar: ["@radix-ui/react-menubar"],
+  FormInput: ["react-hook-form"],
 };

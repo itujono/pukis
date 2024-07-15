@@ -10,6 +10,9 @@ import { CheckboxTemplate } from "./Checkbox";
 import { DialogTemplate } from "./Dialog";
 import { DropdownMenuTemplate } from "./DropdownMenu";
 import { InputOTPTemplate } from "./InputOTP";
+import { FormTemplate } from "./Form";
+import { MenuBarTemplate } from "./MenuBar";
+import { FormInputTemplate } from "./FormInput";
 
 export const componentTemplates: { [key in ComponentName]: string } = {
   Button: ButtonTemplate,
@@ -23,4 +26,7 @@ export const componentTemplates: { [key in ComponentName]: string } = {
   Drawer: DrawerTemplate,
   DropdownMenu: DropdownMenuTemplate,
   InputOTP: InputOTPTemplate,
+  Form: FormTemplate,
+  MenuBar: MenuBarTemplate,
+  FormInput: FormInputTemplate,
 };
