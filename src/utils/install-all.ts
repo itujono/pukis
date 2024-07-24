@@ -1,4 +1,9 @@
-import { validComponents, scaffoldComponent } from "../scaffold";
+import { scaffoldComponent } from "../scaffold";
+import { validComponents } from "./get-list-components";
+
+// Split array into chunks
+const chunk = (arr: string[], size: number) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
 export async function installAllComponents() {
   const ora = (await import("ora")).default;
@@ -6,9 +11,6 @@ export async function installAllComponents() {
   const chalk = (await import("chalk")).default;
   const boxen = (await import("boxen")).default;
 
-  // Function to split array into chunks
-  const chunk = (arr: string[], size: number) =>
-    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
   // Split components into 3 columns
   const columns = chunk([...validComponents], Math.ceil(validComponents.length / 3));
 
@@ -16,7 +18,6 @@ export async function installAllComponents() {
   const maxLength = Math.max(...columns.map((col) => col.length));
   const paddedColumns = columns.map((col) => [...col, ...Array(maxLength - col.length).fill("")]);
 
-  // Create formatted string
   let componentList = "";
   for (let i = 0; i < maxLength; i++) {
     componentList += paddedColumns.map((col) => (col[i] ? `- ${col[i].padEnd(20)}` : "".padEnd(22))).join("") + "\n";

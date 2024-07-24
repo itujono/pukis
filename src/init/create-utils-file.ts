@@ -16,12 +16,12 @@ export async function createUtilsFile() {
   const utilsDir = path.join(process.cwd(), config.utilsDir);
   const utilsFile = path.join(utilsDir, "utils.ts");
   const utilsContent = `
-    import { clsx, type ClassValue } from "clsx";
-    import { twMerge } from "tailwind-merge";
-    
-    export function cn(...inputs: ClassValue[]) {
-      return twMerge(clsx(inputs));
-    }
+  import { clsx, type ClassValue } from "clsx";
+  import { twMerge } from "tailwind-merge";
+  
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
   `;
 
   try {

@@ -57,7 +57,7 @@ const globalsCssContent = `
   }
 
   p {
-    @apply leading-7 font-sans text-black;
+    @apply leading-7 font-sans text-slate-800;
   }
 
   a {

@@ -7,3 +7,5 @@ export const PackageManager = {
   NAME: "pnpm",
   INSTALL: "add",
 };
+
+export const FORM_LIB = "react-hook-form";

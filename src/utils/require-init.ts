@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs";
+import { PROGRAM_NAME } from "../constants";
 
 function getIsInitialized(): boolean {
   const rcPath = path.join(process.cwd(), ".pukisrc");
@@ -19,7 +20,7 @@ function getIsInitialized(): boolean {
 export function requireInit(action: (...args: any[]) => void) {
   return (...args: any[]) => {
     if (!getIsInitialized()) {
-      console.error("Error: Project not initialized. Please run `npx pukis init` first.");
+      console.error(`Error: Project not initialized. Please run \`npx ${PROGRAM_NAME} init\` first.`);
       process.exit(1);
     }
     action(...args);

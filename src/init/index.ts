@@ -38,7 +38,9 @@ Project initialized successfully 🎉🎉.
     `)
     );
     console.log(`
-Next, why don't you try adding a component e.g. \`npx ${PROGRAM_NAME} add Button\`, \`npx ${PROGRAM_NAME} add Card\`, etc.
+Next, why don't you start adding some components? Here are a few examples:
+- ${colorize.orange(`npx ${PROGRAM_NAME} add button`)}
+- ${colorize.orange(`npx ${PROGRAM_NAME} add card`)}
 `);
   } catch (error) {
     if (error instanceof Error) {

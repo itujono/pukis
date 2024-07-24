@@ -1,8 +1,8 @@
-import { ComponentName } from "../scaffold";
+import type { ComponentName } from "../utils/get-list-components";
 import { ButtonTemplate } from "./Button";
 import { CardTemplate } from "./Card";
 import { LabelTemplate } from "./Label";
-import { InputTemplate } from "./Input";
+import { FormInputTemplate, InputTemplate } from "./Input";
 import { DrawerTemplate } from "./Drawer";
 import { AlertTemplate } from "./Alert";
 import { BadgeTemplate } from "./Badge";
@@ -12,21 +12,33 @@ import { DropdownMenuTemplate } from "./DropdownMenu";
 import { InputOTPTemplate } from "./InputOTP";
 import { FormTemplate } from "./Form";
 import { MenuBarTemplate } from "./MenuBar";
-import { FormInputTemplate } from "./FormInput";
+import { TabsTemplate } from "./Tabs";
+import { PopoverTemplate } from "./Popover";
+import { CalendarTemplate } from "./Calendar";
+import { FormSwitchTemplate, SwitchTemplate } from "./Switch";
+import { AlertDialogTemplate } from "./AlertDialog";
+import { DatepickerTemplate } from "./Datepicker";
 
 export const componentTemplates: { [key in ComponentName]: string } = {
-  Button: ButtonTemplate,
-  Label: LabelTemplate,
-  Card: CardTemplate,
-  Input: InputTemplate,
-  Alert: AlertTemplate,
-  Badge: BadgeTemplate,
-  Checkbox: CheckboxTemplate,
-  Dialog: DialogTemplate,
-  Drawer: DrawerTemplate,
-  DropdownMenu: DropdownMenuTemplate,
-  InputOTP: InputOTPTemplate,
-  Form: FormTemplate,
-  MenuBar: MenuBarTemplate,
-  FormInput: FormInputTemplate,
+  button: ButtonTemplate,
+  label: LabelTemplate,
+  card: CardTemplate,
+  input: InputTemplate,
+  "input-otp": InputOTPTemplate,
+  alert: AlertTemplate,
+  "alert-dialog": AlertDialogTemplate,
+  badge: BadgeTemplate,
+  checkbox: CheckboxTemplate,
+  dialog: DialogTemplate,
+  drawer: DrawerTemplate,
+  "dropdown-menu": DropdownMenuTemplate,
+  form: FormTemplate,
+  menubar: MenuBarTemplate,
+  "form-input": FormInputTemplate,
+  tabs: TabsTemplate,
+  popover: PopoverTemplate,
+  calendar: CalendarTemplate,
+  switch: SwitchTemplate,
+  datepicker: DatepickerTemplate,
+  "form-switch": FormSwitchTemplate,
 };
